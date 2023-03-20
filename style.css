@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(199, 210, 220);
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#addb {
+    box-sizing: content-box;
+    appearance: none;
+    border: none;
+    background-color: rgb(52, 94, 127);
+    color: white;
+    border-radius: 10px;
+    width: 200px;
+    height: 60px;
+    font-size: 26px;
+    padding: 7px 20px;
+    margin: 40px;
+}
+
+#addb:hover {
+    background-color: rgb(35, 78, 111);
+
+    cursor: pointer;
+    border: 1px solid rgb(52, 94, 127);
+    scale: 1.01;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  display: none;
+}
+
+.input-row {
+  margin: 20px;
+}
+
+.table {
+  width: 90%;
+  text-align: center;
+  margin-top: 20px;
+  
+}
+
+.btn, .dbtn {
+  appearance: none;
+  border: none;
+  width: 90px;
+  height:30px;
+  margin: 5px;
+  border-radius: 20px;
+  background-color: rgb(199, 217, 231);
+  font-size: 16px;
+}
+
+.btn:hover, .dbtn:hover {
+  cursor: pointer;
+  scale: 1.05;
+  background-color: rgb(35, 78, 111);
+  color: white;
+}
+
+label {
+  font-size: 30px;
+  display: inline-block;
+  width: 350px;
+}
+.form input[type="text"],
+.form input[type="number"] {
+  appearance: none;
+
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  height: 40px;
+  width: 300px;
+}
+
+#push {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form input[type="submit"]{
+    
+    box-sizing: content-box;
+    appearance: none;
+    border: none;
+    background-color: rgb(52, 94, 127);
+    color: white;
+    border-radius: 10px;
+    width: 200px;
+    height: 60px;
+    font-size: 26px;
+    padding: 7px 20px;
+    margin: auto;
+}
+
+.form input[type="submit"]:hover {
+    background-color: rgb(152, 164, 176);
+    color: rgb(52, 94, 127);
+    cursor: pointer;
+    border: 1px solid rgb(52, 94, 127);
+    scale: 1.05;
+}
+
+
+thead {
+  background-color: rgb(87, 115, 137);
+  font-size: 24px;
+}
+
+tbody {
+    font-size: 22px;
+}
+
+.form input[type="checkbox"] {
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(201, 201, 201);
+  width: 30px;
+  height: 30px;
+}
+.card {
+  background-color: white;
+  border-radius: 5px;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  margin: auto;
+}
