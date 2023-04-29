@@ -79,6 +79,16 @@ body {
   color: white;
 }
 
+.form .input-row input.invalid {
+  border: 1px solid #900;
+  
+  background-color: #fdd;
+}
+
+.form input:focus.invalid {
+  outline: none;
+}
+
 label {
   font-size: 30px;
   display: inline-block;

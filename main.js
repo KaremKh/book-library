@@ -55,16 +55,62 @@ function handleForm(event) {
   const form = document.querySelector('form');
   event.preventDefault();
 
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
-  const pages = document.getElementById('pages').value;
-  const read = document.getElementById('read').checked;
+  let ok = true;
 
-  form.reset();
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  const pages = document.getElementById('pages');
+  const read = document.getElementById('read');
 
-  console.log(title, author, pages, read);
-  addBookToLibrary(title, author, pages, read);
-  showBook();
+
+
+  console.log('title value:', title.value); // add this line
+  const isTitleValid = title.value.length === 0 || textRegExp.test(title.value);
+  if (!isTitleValid) {
+    title.className = "invalid";
+    titleError.textContent = "I expect a valid title, darling!";
+    titleError.className = "error active";
+    ok =  false;
+  } else {
+    title.className = "valid";
+    titleError.textContent = "";
+    titleError.className = "error";
+  }
+
+  const isAuthorValid = author.value.length === 0 || textRegExp.test(author.value);
+  if (!isAuthorValid) {
+    author.className = "invalid";
+    authorError.textContent = "I expect a valid author, darling!";
+    authorError.className = "error active";
+    ok =  false;
+  } else {
+    author.className = "valid";
+    authorError.textContent = "";
+    authorError.className = "error";
+  }
+
+  const isPagesValid = pages.value > 0 ;
+  if (!isPagesValid) {
+    pages.className = "invalid";
+    pagesError.textContent = "I expect a positive number, darling!";
+    pagesError.className = "error active";
+    ok =  false;
+  } else {
+    pages.className = "valid";
+    pagesError.textContent = "";
+    pagesError.className = "error";
+  }
+
+  if (ok==true) {
+    
+    console.log(title.value, author.value, pages.value, read.checked);
+    addBookToLibrary(title.value, author.value, pages.value, read.checked);
+    showBook();
+    form.reset();
+  }
+  return ok;
+
+  
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -84,3 +130,68 @@ window.onload = function () {
   addBookToLibrary('AAA', 'BBB', 20, true);
   showBook();
 };
+
+const form = document.querySelector("form");
+const title = document.getElementById("title");
+const author = document.getElementById("author");
+const pages = document.getElementById("pages");
+console.log(title);
+
+const titleError = title.nextElementSibling;
+const authorError = author.nextElementSibling;
+const pagesError = pages.nextElementSibling;
+
+console.log(authorError);
+// As per the HTML Specification
+const textRegExp =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+// Now we can rebuild our validation constraint
+// Because we do not rely on CSS pseudo-class, we have to
+// explicitly set the valid/invalid class on our email field
+window.addEventListener("load", () => {
+  // Here, we test if the field is empty (remember, the field is not required)
+  // If it is not, we check if its content is a well-formed email address.
+  const isTitleValid = title.value.length === 0 || textRegExp.test(title.value);
+  title.className = isTitleValid ? "valid" : "invalid";
+  const isAuthorValid = author.value.length === 0 || textRegExp.test(author.value);
+  author.className = isAuthorValid ? "valid" : "invalid";
+});
+
+// This defines what happens when the user types in the field
+title.addEventListener("input", () => {
+  const isTitleValid = title.value.length === 0 || textRegExp.test(title.value);
+  if (isTitleValid) {
+    title.className = "valid";
+    titleError.textContent = "";
+    titleError.className = "error";
+  } else {
+    title.className = "invalid";
+  }
+});
+
+author.addEventListener("input", () => {
+  console.log('input');
+  const isAuthorValid = author.value.length === 0 || textRegExp.test(author.value);
+  if (isAuthorValid) {
+    author.className = "valid";
+    authorError.textContent = "";
+    authorError.className = "error";
+  } else {
+    author.className = "invalid";
+  }
+});
+
+pages.addEventListener("input", () => {
+  console.log('input');
+  const isPagesValid = pages.value > 0 ;
+  if (isPagesValid) {
+    pages.className = "valid";
+    pagesError.textContent = "";
+    pagesError.className = "error";
+  } else {
+    pages.className = "invalid";
+  }
+});
+
+

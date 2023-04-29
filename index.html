@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
   </head>
   <body>
     <div class="header">
@@ -20,14 +20,17 @@
         <div class="input-row">
           <label for="title">Title:</label>
           <input type="text" name="" id="title" required />
+          <span class="error" aria-live="polite"></span>
         </div>
         <div class="input-row">
           <label for="author">Author</label>
           <input type="text" name="" id="author" required />
+          <span class="error" aria-live="polite"></span>
         </div>
         <div class="input-row">
           <label for="pages">Number of Pages:</label>
           <input type="number" name="" id="pages" required />
+          <span class="error" aria-live="polite"></span>
         </div>
         <div class="input-row">
           <label for="read">Did you read the book?</label>
